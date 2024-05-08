@@ -56,3 +56,24 @@ def delete_card_db(card_id):
         return {'status': 1, 'message': 'Карта успешно добавлена'}
     else:
         return {'status': 0, 'message': 'Ошибка при удалении'}
+
+def edit_card_info(user_id, change_info, new_info):
+    db = next(get_db())
+
+    card = db.query(UserCard).filter_by(user_id=user_id).first()
+    if card:
+        try:
+            if card == 'card_name':
+                card.card_name = new_info
+                db.commit()
+                return {'status': 1, 'message': 'Инфо успешно обновлена'}
+            else:
+                return {'status': 0, 'message': 'Не понял!'}
+        except:
+            return {'status': 0, 'message': 'Ошибка!'}
+    else:
+        return {'status': 0, 'message': 'Не найден!'}
+
+
+
+
