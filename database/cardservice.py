@@ -56,7 +56,8 @@ def delete_card_db(card_id):
         return {'status': 1, 'message': 'Карта успешно добавлена'}
     else:
         return {'status': 0, 'message': 'Ошибка при удалении'}
-
+        
+# Измение информаций на карте
 def edit_card_info(user_id, change_info, new_info):
     db = next(get_db())
 
